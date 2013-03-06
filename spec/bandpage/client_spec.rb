@@ -16,8 +16,7 @@ describe Bandpage::Client do
   }
 
   before do
-    FakeWeb.register_uri(:post, "#{Bandpage::Client::BASE_URL}/token",
-                          response: Bandpage::RecordedApiResponses.authenticate)
+    subject.token = Bandpage::Token.new('sometoken', 5000)
   end
 
   describe 'connections' do

@@ -29,7 +29,7 @@ module Bandpage
     private
 
     def authenticate
-      response = ::HTTParty.post("#{BASE_URL}/token",
+      resp = HTTParty.post("#{BASE_URL}/token",
                                basic_auth: {
                                  username: config.client_id,
                                  password: config.secret_key
@@ -38,7 +38,11 @@ module Bandpage
                                  client_id: config.client_id,
                                  grant_type: 'client_credentials'
                                })
-      @token = Bandpage::Token.new(response['access_token'], response['expires_in'])
+      if [200, 202].include? resp.code
+        @token = Bandpage::Token.new(resp['access_token'], resp['expires_in'])
+      else
+        error_response resp
+      end
     end
 
     def get(connection = nil)
@@ -47,9 +51,9 @@ module Bandpage
         {"Authorization" => "Bearer #{@token.string}"}
       )
       if [200, 202].include? resp.code
-        load_response_objects(resp)
+        load_response_objects resp
       else
-        error_response(resp)
+        error_response resp
       end
     end
 
@@ -60,7 +64,7 @@ module Bandpage
         when 404
           Bandpage::ResourceNotFoundError
         when 500
-          Bandpage::ServerError.new(resp['error'])
+          Bandpage::ServerError.new resp['error']
         else
           StandardError.new("An unknown error occurred when attempting to parse: #{resp.inspect}")
       end
