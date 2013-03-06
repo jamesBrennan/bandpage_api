@@ -20,12 +20,6 @@ module BandPage
       super
     end
 
-    def load_response_objects(response)
-      response.parsed_response.map do |obj|
-        RecursiveOpenStruct.new(obj)
-      end
-    end
-
     private
 
     def authenticate
@@ -55,6 +49,12 @@ module BandPage
         load_response_objects resp
       else
         error_response resp
+      end
+    end
+
+    def load_response_objects(response)
+      response.parsed_response.map do |obj|
+        RecursiveOpenStruct.new(obj)
       end
     end
 
