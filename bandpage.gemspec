@@ -4,7 +4,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'band_page/version'
 
 Gem::Specification.new do |gem|
-  gem.name          = "band_page_api"
+  gem.name          = "band_page"
   gem.version       = BandPage::VERSION
   gem.authors       = ["James Brennan"]
   gem.email         = ["james@carbonfive.com", "brennanmusic@gmail.com"]
