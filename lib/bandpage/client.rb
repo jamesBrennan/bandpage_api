@@ -71,7 +71,7 @@ module Bandpage
     end
 
     def url(connection)
-      connection.nil? ? band_url : "#{band_url}/#{connection}adc"
+      connection.nil? ? band_url : "#{band_url}/#{connection}"
     end
 
     def band_url
