@@ -1,4 +1,4 @@
-# Bandpage
+# BandPage
 
 A ruby wrapper for the BandPage API.
 

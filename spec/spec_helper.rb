@@ -1,7 +1,7 @@
 require 'rubygems'
 require 'bundler/setup'
 
-require 'bandpage'
+require 'band_page'
 require 'fakeweb'
 
 FakeWeb.allow_net_connect = false

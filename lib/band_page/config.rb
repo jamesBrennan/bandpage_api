@@ -1,6 +1,6 @@
 # Config object which exists primarily to document the
 # information needed to interact with the BandPage API
-module Bandpage
+module BandPage
   class Config
     attr_accessor :app_id, :client_id, :secret_key, :band_id
 

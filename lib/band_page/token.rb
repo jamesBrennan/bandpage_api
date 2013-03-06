@@ -1,4 +1,4 @@
-module Bandpage
+module BandPage
   class Token
     attr_accessor :expires_at, :string
     def initialize(string, expires_in)

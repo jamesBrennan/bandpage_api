@@ -1,11 +1,11 @@
 # -*- encoding: utf-8 -*-
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'bandpage/version'
+require 'band_page/version'
 
 Gem::Specification.new do |gem|
-  gem.name          = "bandpage"
-  gem.version       = Bandpage::VERSION
+  gem.name          = "band_page_api"
+  gem.version       = BandPage::VERSION
   gem.authors       = ["James Brennan"]
   gem.email         = ["james@carbonfive.com", "brennanmusic@gmail.com"]
   gem.description   = 'Wrapper for BandPage API'

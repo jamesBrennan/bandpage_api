@@ -1,7 +1,7 @@
 require 'httparty'
 require 'recursive-open-struct'
 
-module Bandpage
+module BandPage
   class Client
     CONNECTIONS = [:emails, :events, :genres, :tracks, :photos, :videos, :websites]
     BASE_URL = 'https://api-read.bandpage.com/'
@@ -39,7 +39,7 @@ module Bandpage
                                  grant_type: 'client_credentials'
                                })
       if [200, 202].include? resp.code
-        @token = Bandpage::Token.new(resp['access_token'], resp['expires_in'])
+        @token = BandPage::Token.new(resp['access_token'], resp['expires_in'])
       else
         error_response resp
       end
@@ -51,6 +51,7 @@ module Bandpage
         {"Authorization" => "Bearer #{@token.string}"}
       )
       if [200, 202].include? resp.code
+        return resp if connection.nil?
         load_response_objects resp
       else
         error_response resp
@@ -60,11 +61,11 @@ module Bandpage
     def error_response(resp)
       raise case resp.code
         when 401
-          Bandpage::AuthorizationError
+          BandPage::AuthorizationError
         when 404
-          Bandpage::ResourceNotFoundError
+          BandPage::ResourceNotFoundError
         when 500
-          Bandpage::ServerError.new resp['error']
+          BandPage::ServerError.new resp['error']
         else
           StandardError.new("An unknown error occurred when attempting to parse: #{resp.inspect}")
       end

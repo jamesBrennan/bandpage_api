@@ -1,7 +1,7 @@
 require 'spec_helper'
 
-describe Bandpage::Token do
-  let(:subject) { Bandpage::Token }
+describe BandPage::Token do
+  let(:subject) { BandPage::Token }
 
   before do
     @time = Time.now
