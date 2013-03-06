@@ -9,8 +9,8 @@ Gem::Specification.new do |gem|
   gem.authors       = ["James Brennan"]
   gem.email         = ["james@carbonfive.com", "brennanmusic@gmail.com"]
   gem.description   = 'Wrapper for BandPage API'
-  gem.summary       = 'Wrapper for BandPage API'
-  gem.homepage      = ""
+  gem.summary       = 'Wrapper for BandPage API - https://developers.bandpage.com/docs'
+  gem.homepage      = "https://github.com/jamesBrennan/bandpage_api"
 
   gem.files         = `git ls-files`.split($/)
   gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
