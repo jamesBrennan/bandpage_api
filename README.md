@@ -4,17 +4,7 @@ A ruby wrapper for the BandPage API.
 
 ## Installation
 
-Add this line to your application's Gemfile:
-
-    gem 'bandpage'
-
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
-
-    $ gem install bandpage
+This is pre-release code that hasn't been uploaded to rubygems yet.
 
 ## Usage
 
